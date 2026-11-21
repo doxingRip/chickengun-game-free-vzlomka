@@ -27,7 +27,8 @@
       "*.png",
       "*.webp",
       "*.mp3",
-      "package.json"
+      "package.json",
+      "*.jfif"
     ],
     "win": {
       "target": [
