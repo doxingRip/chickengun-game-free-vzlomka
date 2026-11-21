@@ -44,12 +44,22 @@ const fs=require('fs'),path=require('path');
 const {pathToFileURL}=require('url');
 const $=id=>document.getElementById(id);
 let progress=0,closed=false,images=[],shown=0;
-const root=path.join(__dirname,'..','assets');
-const imageDir=path.join(root,'images');
-const musicPath=path.join(root,'music','background.mp3');
-try{if(fs.existsSync(imageDir))images=fs.readdirSync(imageDir).filter(f=>/\.(png|jpe?g|gif|webp)$/i.test(f)).map(f=>pathToFileURL(path.join(imageDir,f)).href)}catch(e){}
+const root=path.join(__dirname,'..');
+const assetImageDir=path.join(root,'assets','images');
+const imageExt=/\.(png|jpe?g|gif|webp)$/i;
+const musicExt=/\.mp3$/i;
+try{
+ const rootImages=fs.readdirSync(root).filter(f=>imageExt.test(f));
+ const assetImages=fs.existsSync(assetImageDir)?fs.readdirSync(assetImageDir).filter(f=>imageExt.test(f)).map(f=>path.join(assetImageDir,f)):[];
+ images=[...rootImages.map(f=>path.join(root,f)),...assetImages].map(f=>pathToFileURL(f).href);
+}catch(e){}
 const lines=['Подключение кабеля HDMI к курице…','Поиск второго изгиба у монитора…','Разгон матрицы до 360 FPS…','Загрузка драйверов для 5K…','Проверка гарантии у продавца с рынка…','Настройка турбо-режима…','Почти готово. Не трогайте пиксели…'];
-try{if(fs.existsSync(musicPath)){$('music').src=pathToFileURL(musicPath).href;$('music').volume=.55;$('music').play().catch(()=>{})}}catch(e){}
+try{
+ const musicFiles=fs.readdirSync(root).filter(f=>musicExt.test(f)).map(f=>path.join(root,f));
+ const musicDir=path.join(root,'assets','music');
+ if(fs.existsSync(musicDir))musicFiles.push(...fs.readdirSync(musicDir).filter(f=>musicExt.test(f)).map(f=>path.join(musicDir,f)));
+ if(musicFiles.length){$('music').src=pathToFileURL(musicFiles[Math.floor(Math.random()*musicFiles.length)]).href;$('music').volume=.55;$('music').play().catch(()=>{})}
+}catch(e){}
 function popPhoto(){
  if(!images.length||closed)return;
  const img=document.createElement('img');img.className='photo';img.src=images[Math.floor(Math.random()*images.length)];
