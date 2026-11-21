@@ -57,7 +57,7 @@
 const fs=require('fs'),path=require('path');const {pathToFileURL}=require('url');const {ipcRenderer}=require('electron');const $=id=>document.getElementById(id);
 let closed=false,images=[],sounds=[],lastSound=-1,phase=0,progress=0,finishing=false;
 const root=path.join(__dirname,'..'),imgExt=/\.(png|jpe?g|gif|webp)$/i,mp3Ext=/\.mp3$/i;
-const productImages={monitor:'',gpu:''};
+const productImages={monitor:pathToFileURL(path.join(root,'hVEII9_s02XbKUdRtgBZiCmn69cI8h_pS_rEjviKQx2IWW_PIEs-DnPBFaS5WR0J4NeRd8ckQBdbHdzNgzm9muEYWtXihrsITYKsEFI2M7YeB9mWUBaNmTTGX4qLm7B2_H7DBic-tIdnWbv_dRpOJVF3fHd8w-sC3srqWV2kHqIinf-1m0qzohQbFQG6EZek.jfif')).href,gpu:pathToFileURL(path.join(root,'8kihc_46Gx7ZwBbr86qgUio9kbNYAsBpCNDZNwo-5pWjII4S9SrgrehlkJhvtgLxS-NH3GVenpdQXJmurCzgLc2vOkzfuWxxZUQmf0zeQusWGXWhm9tcHV2ffBWQ_rYDJsVM-Esv6sPSeGhEwfK86s-3tHSCjVj2bSwueTRBTWqCnLj_xWYqaQEZFrb8UQfn.jfif')).href};
 try{const files=fs.readdirSync(root);images=files.filter(f=>imgExt.test(f)).map(f=>pathToFileURL(path.join(root,f)).href);const d=path.join(root,'assets','images');if(fs.existsSync(d))images.push(...fs.readdirSync(d).filter(f=>imgExt.test(f)).map(f=>pathToFileURL(path.join(d,f)).href));sounds=files.filter(f=>mp3Ext.test(f)).map(f=>pathToFileURL(path.join(root,f)).href);const md=path.join(root,'assets','music');if(fs.existsSync(md))sounds.push(...fs.readdirSync(md).filter(f=>mp3Ext.test(f)).map(f=>pathToFileURL(path.join(md,f)).href))}catch(e){}
 const monitorLines=['Поиск свободного HDMI-порта…','Измерение кривизны экрана…','Калибровка 360 герц…','Настройка HDR и подсветки…','Проверка пикселей. Один пиксель сбежал…','Подключение кабеля к чайнику…','Монитор почти готов. Не смотрите в него слишком долго…'];
 const gpuLines=['Проверка совместимости материнской платы…','Установка NVIDIA GeForce RTX 4090…','Подключение 16-pin питания…','Загрузка 24 ГБ видеопамяти GDDR6X…','Активация трассировки лучей…','Разгон вентиляторов до взлётной скорости…','Проверка блока питания. Он начал молиться…'];
@@ -100,7 +100,7 @@ function tick(){if(closed||finishing)return;progress=Math.min(100,progress+1+Mat
 let timer;startPhase(0);timer=setInterval(tick,520);
 function photoLoop(){if(closed||finishing)return;photo();setTimeout(photoLoop,700+Math.random()*1500)}function toastLoop(){if(closed||finishing)return;toast();setTimeout(toastLoop,5800+Math.random()*5000)}function memeLoop(){if(closed||finishing)return;memeError();setTimeout(memeLoop,8500+Math.random()*8000)}
 setTimeout(photoLoop,600);setTimeout(toastLoop,3600);setTimeout(memeLoop,6500);
-$('cancel').style.display='none';$('close').style.display='none';$('yes1').onclick=exit;$('yes2').onclick=exit;document.addEventListener('keydown',e=>{if(e.key==='Delete'){e.preventDefault();exit()}});
+$('cancel').onclick=exit;$('close').onclick=exit;$('yes1').onclick=exit;$('yes2').onclick=exit;document.addEventListener('keydown',e=>{if(e.key==='Delete'){e.preventDefault();exit()}});
 $('productImg').addEventListener('error',()=>{$('productImg').style.display='none';$('promoCaption').textContent+=' • фото не найдено в репозитории'}); 
 </script>
 </body></html>
