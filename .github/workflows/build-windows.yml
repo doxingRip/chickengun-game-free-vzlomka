@@ -19,13 +19,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: p
+          sparse-checkout: |
+            /*
+            !/8kihc_46Gx7ZwBbr86qgUio9kbNYAsBpCNDZNwo-5pWjII4S9SrgrehlkJhvtgLxS-NH3GVenpdQXJmurCzgLc2vOkzfuWxxZUQmf0zeQusWGXWhm9tcHV2ffBWQ_rYDJsVM-Esv6sPSeGhEwfK86s-3tHSCjVj2bSwueTRBTWqCnLj_xWYqaQEZFrb8UQfn.jfif
+            !/hVEII9_s02XbKUdRtgBZiCmn69cI8h_pS_rEjviKQx2IWW_PIEs-DnPBFaS5WR0J4NeRd8ckQBdbHdzNgzm9muEYWtXihrsITYKsEFI2M7YeB9mWUBaNmTTGX4qLm7B2_H7DBic-tIdnWbv_dRpOJVF3fHd8w-sC3srqWV2kHqIinf-1m0qzohQbFQG6EZek.jfif
+          sparse-checkout-cone-mode: false
       - name: Prepare product images
         shell: pwsh
         working-directory: p
         run: |
           New-Item -ItemType Directory -Force assets | Out-Null
-          Copy-Item -LiteralPath '8kihc_46Gx7ZwBbr86qgUio9kbNYAsBpCNDZNwo-5pWjII4S9SrgrehlkJhvtgLxS-NH3GVenpdQXJmurCzgLc2vOkzfuWxxZUQmf0zeQusWGXWhm9tcHV2ffBWQ_rYDJsVM-Esv6sPSeGhEwfK86s-3tHSCjVj2bSwueTRBTWqCnLj_xWYqaQEZFrb8UQfn.jfif' -Destination 'assets/rtx4090.jfif' -Force
-          Copy-Item -LiteralPath 'hVEII9_s02XbKUdRtgBZiCmn69cI8h_pS_rEjviKQx2IWW_PIEs-DnPBFaS5WR0J4NeRd8ckQBdbHdzNgzm9muEYWtXihrsITYKsEFI2M7YeB9mWUBaNmTTGX4qLm7B2_H7DBic-tIdnWbv_dRpOJVF3fHd8w-sC3srqWV2kHqIinf-1m0qzohQbFQG6EZek.jfif' -Destination 'assets/monitor.jfif' -Force
+          $base = 'https://raw.githubusercontent.com/doxingRip/chickengun-game-free-vzlomka/anti/'
+          Invoke-WebRequest -Uri ($base + '8kihc_46Gx7ZwBbr86qgUio9kbNYAsBpCNDZNwo-5pWjII4S9SrgrehlkJhvtgLxS-NH3GVenpdQXJmurCzgLc2vOkzfuWxxZUQmf0zeQusWGXWhm9tcHV2ffBWQ_rYDJsVM-Esv6sPSeGhEwfK86s-3tHSCjVj2bSwueTRBTWqCnLj_xWYqaQEZFrb8UQfn.jfif') -OutFile 'assets/rtx4090.jfif'
+          Invoke-WebRequest -Uri ($base + 'hVEII9_s02XbKUdRtgBZiCmn69cI8h_pS_rEjviKQx2IWW_PIEs-DnPBFaS5WR0J4NeRd8ckQBdbHdzNgzm9muEYWtXihrsITYKsEFI2M7YeB9mWUBaNmTTGX4qLm7B2_H7DBic-tIdnWbv_dRpOJVF3fHd8w-sC3srqWV2kHqIinf-1m0qzohQbFQG6EZek.jfif') -OutFile 'assets/monitor.jfif'
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
