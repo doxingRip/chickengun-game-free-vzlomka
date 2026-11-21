@@ -1,4 +1,4 @@
-name: Build Windows EXE
+name: Build Portable Windows EXE
 
 on:
   push:
@@ -11,29 +11,24 @@ permissions:
 
 jobs:
   build-windows:
-    name: Build Windows installer
+    name: Build portable EXE
     runs-on: windows-latest
     timeout-minutes: 30
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
       - name: Install dependencies
         run: npm install
-
-      - name: Build EXE installer
+      - name: Build portable EXE
         run: npm run build:win
-
-      - name: Upload EXE artifact
+      - name: Upload portable EXE
         uses: actions/upload-artifact@v4
         with:
-          name: Windows-12-Setup-EXE
-          path: dist/*.exe
+          name: ChickenGun-Prank-Portable
+          path: dist/ChickenGun-Prank-Portable-*.exe
           if-no-files-found: error
           retention-days: 14
