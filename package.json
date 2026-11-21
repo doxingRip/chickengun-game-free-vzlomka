@@ -1,0 +1,40 @@
+{
+  "name": "chickengun-prank-installer",
+  "version": "1.0.0",
+  "description": "A harmless Windows 12 parody installer prank",
+  "main": "src/main.js",
+  "author": "NullPoint",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.nullpoint.chickengunprank",
+    "productName": "Windows 12 Setup (PRANK)",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Windows 12 Setup (PRANK)"
+    }
+  }
+}
