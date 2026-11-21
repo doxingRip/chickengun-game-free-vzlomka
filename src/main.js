@@ -8,7 +8,7 @@ function createWindow() {
     title: 'Windows 12 Setup — totally real (нет)',
     backgroundColor: '#080b14',
     autoHideMenuBar: true,
-    webPreferences: { contextIsolation: true, nodeIntegration: false }
+    webPreferences: { contextIsolation: true, nodeIntegration: true }
   });
   win.loadFile(path.join(__dirname, 'index.html'));
 }
