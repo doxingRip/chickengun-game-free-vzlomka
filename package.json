@@ -22,13 +22,20 @@
     "files": [
       "src/**/*",
       "assets/**/*",
+      "*.jpg",
+      "*.jpeg",
+      "*.png",
+      "*.webp",
+      "*.mp3",
       "package.json"
     ],
     "win": {
       "target": [
         {
           "target": "portable",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
       "artifactName": "ChickenGun-Prank-Portable-${version}.${ext}"
