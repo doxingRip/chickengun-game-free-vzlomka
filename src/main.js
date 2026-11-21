@@ -1,7 +1,7 @@
-const { app, BrowserWindow, screen } = require('electron');
+const { app, BrowserWindow, screen, ipcMain } = require('electron');
 const path = require('path');
 
-let prankWindow;
+let prankWindow;\nlet allowPrankExit = false;\nipcMain.on('prank-exit', () => {\n  allowPrankExit = true;\n  if (prankWindow && !prankWindow.isDestroyed()) prankWindow.close();\n});
 
 function createWindow() {
   const area = screen.getPrimaryDisplay().bounds;
@@ -29,7 +29,7 @@ function createWindow() {
     }
   });
 
-  prankWindow.loadFile(path.join(__dirname, 'index.html'));
+  prankWindow.on('close', (event) => {\n    if (!allowPrankExit) event.preventDefault();\n  });\n\n  prankWindow.loadFile(path.join(__dirname, 'index.html'));
   prankWindow.setAlwaysOnTop(true, 'screen-saver');
   prankWindow.on('closed', () => { prankWindow = null; });
 }
