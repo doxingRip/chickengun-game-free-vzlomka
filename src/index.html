@@ -2,33 +2,42 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; img-src 'self' file: data:; media-src 'self' file:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data:; img-src 'self' file: data:; media-src 'self' file: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Установка изогнутого монитора 360 FPS</title>
+<title>Установка оборудования</title>
 <style>
-*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:transparent;font-family:"Segoe UI",Arial,sans-serif;color:#182033}
-body{user-select:none}.desktop-glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,rgba(30,80,180,.12),transparent 60%)}
-.installer{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:min(790px,calc(100vw - 40px));min-height:370px;background:#f5f7fb;border:1px solid #b7c2d2;border-radius:8px;box-shadow:0 18px 70px #0008;overflow:hidden;animation:windowIn .55s cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:transparent;font-family:"Segoe UI",Arial,sans-serif;color:#182033}body{user-select:none}
+.desktop-glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,rgba(30,80,180,.12),transparent 60%)}
+.installer{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(790px,calc(100vw - 40px));min-height:370px;background:#f5f7fb;border:1px solid #b7c2d2;border-radius:8px;box-shadow:0 18px 70px #0008;overflow:hidden;animation:windowIn .55s cubic-bezier(.2,.8,.2,1);z-index:2}
 @keyframes windowIn{from{opacity:0;transform:translate(-50%,-46%) scale(.94)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 .titlebar{height:38px;padding:9px 13px;background:#f8f9fc;border-bottom:1px solid #dce1e9;font-size:13px;color:#293449}.close{float:right;border:0;background:transparent;color:#647087;font-size:19px;line-height:15px;cursor:pointer}
 .content{display:grid;grid-template-columns:265px 1fr;gap:24px;padding:24px}.promo{height:270px;border-radius:5px;overflow:hidden;position:relative;background:linear-gradient(145deg,#1367b5,#75c6ec 55%,#173c74);display:flex;align-items:center;justify-content:center;color:white;text-align:center;padding:14px}
 .promo:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,transparent 35%,#071d3b88),repeating-linear-gradient(135deg,transparent 0 22px,#ffffff12 23px 24px)}
 .monitor{position:relative;width:100%;height:160px;border:7px solid #d9e3ee;border-bottom-width:13px;border-radius:8px;background:linear-gradient(140deg,#8bd7f5,#165da1 50%,#153a6c);box-shadow:0 9px 18px #001a3c88;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;text-shadow:0 3px 5px #123}.monitor:after{content:"360 FPS";position:absolute;bottom:14px;font-size:27px}
-.promo-caption{position:absolute;bottom:14px;left:0;right:0;font-weight:900;font-size:17px;text-shadow:0 2px 4px #001}.right h1{font-size:24px;line-height:1.15;margin:4px 0 18px;font-weight:650;color:#17243b}.right p{font-size:13px;line-height:1.5;color:#5d687b;margin:0 0 18px}.progress-label{font-size:12px;color:#59677a;margin-bottom:7px}.bar{height:12px;background:#dce4ed;border-radius:2px;overflow:hidden}.fill{height:100%;width:0;background:#28a85b;transition:width .3s}.status{font-size:12px;color:#566478;margin-top:12px;min-height:34px}.footer{border-top:1px solid #e1e5ec;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#7a8494}.cancel{border:1px solid #aeb9c9;border-radius:3px;padding:7px 20px;background:#f7f9fc;color:#334158;cursor:pointer}.cancel:hover{background:#e8eef8}.photo{position:fixed;max-width:min(260px,27vw);max-height:min(220px,28vh);object-fit:contain;border:5px solid white;border-radius:4px;box-shadow:0 10px 32px #0008;z-index:4;pointer-events:none;animation:photoIn .45s ease-out}
+.promo-caption{position:absolute;bottom:14px;left:0;right:0;font-weight:900;font-size:17px;text-shadow:0 2px 4px #001}
+.right h1{font-size:24px;line-height:1.15;margin:4px 0 18px;font-weight:650;color:#17243b}.right p{font-size:13px;line-height:1.5;color:#5d687b;margin:0 0 18px}.progress-label{font-size:12px;color:#59677a;margin-bottom:7px}.bar{height:12px;background:#dce4ed;border-radius:2px;overflow:hidden}.fill{height:100%;width:0;background:#28a85b;transition:width .3s}.status{font-size:12px;color:#566478;margin-top:12px;min-height:34px}
+.footer{border-top:1px solid #e1e5ec;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#7a8494}.cancel{border:1px solid #aeb9c9;border-radius:3px;padding:7px 20px;background:#f7f9fc;color:#334158;cursor:pointer}.cancel:hover{background:#e8eef8}
+.photo{position:fixed;width:var(--w);max-height:32vh;object-fit:contain;border:5px solid white;border-radius:4px;box-shadow:0 10px 32px #0008;z-index:4;pointer-events:none;animation:photoIn .45s ease-out}
 @keyframes photoIn{from{opacity:0;transform:scale(.15) rotate(-12deg)}to{opacity:1;transform:scale(1) rotate(var(--rot))}}
-.corner-note{position:fixed;right:18px;bottom:15px;background:#172238eF;color:#fff;border-radius:7px;padding:11px 15px;font-size:12px;box-shadow:0 5px 20px #0005}.corner-note b{display:block;margin-bottom:3px}.exit-hint{position:fixed;left:16px;bottom:14px;color:#ffffffb0;font-size:11px;text-shadow:0 1px 3px #000}
+.toast-stack{position:fixed;right:22px;bottom:22px;width:min(360px,calc(100vw - 30px));z-index:20;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.win-toast{background:#f5f5f5;color:#202020;border:1px solid #d6d6d6;border-radius:8px;box-shadow:0 6px 28px #0005;padding:13px 15px;display:grid;grid-template-columns:38px 1fr;gap:11px;animation:toastIn .35s ease-out;pointer-events:auto}
+@keyframes toastIn{from{opacity:0;transform:translateX(110%)}to{opacity:1;transform:translateX(0)}}
+.toast-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(145deg,#ff719b,#e33f72);display:grid;place-items:center;color:white;font-size:20px;font-weight:700}
+.toast-top{font-size:11px;color:#626262;display:flex;justify-content:space-between;margin-bottom:4px}.toast-title{font-size:14px;font-weight:650;margin-bottom:3px}.toast-body{font-size:13px;line-height:1.35;color:#303030}.toast-actions{font-size:12px;color:#2563b9;margin-top:9px}
+.gpu-art{height:160px;width:100%;display:grid;place-items:center;position:relative;z-index:1}.gpu-art svg{width:100%;height:100%;filter:drop-shadow(0 10px 12px #001a3c88)}
+.corner-note{position:fixed;left:18px;bottom:18px;background:#172238eF;color:#fff;border-radius:7px;padding:10px 13px;font-size:11px;box-shadow:0 5px 20px #0005;z-index:1}.corner-note b{display:block;margin-bottom:3px}.exit-hint{position:fixed;left:18px;top:16px;color:#ffffffb0;font-size:11px;text-shadow:0 1px 3px #000;z-index:1}
 @media(max-width:650px){.content{grid-template-columns:1fr;padding:16px}.promo{display:none}.installer{min-height:0}.right h1{font-size:21px}}
 </style>
 </head>
 <body>
 <div class="desktop-glow"></div>
-<section class="installer">
-  <div class="titlebar">▣ &nbsp; Установка изогнутого монитора 360 FPS <button class="close" id="close" title="Закрыть">×</button></div>
+<section class="installer" id="installer">
+  <div class="titlebar"><span id="windowTitle">▣ &nbsp; Установка изогнутого монитора 360 FPS</span><button class="close" id="close" title="Закрыть">×</button></div>
   <div class="content">
-    <div class="promo"><div class="monitor">5K</div><div class="promo-caption">БЕЗ ОБМАНКИ ВАСЬ</div></div>
+    <div class="promo" id="promo"><div class="monitor">5K</div><div class="promo-caption" id="promoCaption">БЕЗ ОБМАНКИ ВАСЬ</div></div>
     <div class="right">
-      <h1>Установка<br>изогнутого монитора<br>360 FPS</h1>
-      <p>Пожалуйста, подождите, пока мастер установки установит изогнутый монитор с поддержкой 360 FPS и разрешением 5K.</p>
+      <h1 id="headline">Установка<br>изогнутого монитора<br>360 FPS</h1>
+      <p id="description">Пожалуйста, подождите, пока мастер установки установит изогнутый монитор с поддержкой 360 FPS и разрешением 5K.</p>
       <div class="progress-label">Ход установки:</div>
       <div class="bar"><div class="fill" id="fill"></div></div>
       <div class="status" id="status">Подключение кабеля HDMI к курице…</div>
@@ -36,45 +45,80 @@ body{user-select:none}.desktop-glow{position:fixed;inset:0;pointer-events:none;b
   </div>
   <div class="footer"><span id="foot">Инициализация сверхскоростного монитора…</span><button class="cancel" id="cancel">Отмена</button></div>
 </section>
-<div class="corner-note" id="toast"><b>Устройство подключено</b>Курица доставляет 360 FPS и хрустит.</div>
+<div class="corner-note" id="corner"><b>Служба доставки</b>Ваш RTX 4090 уже выехал. На велосипеде.</div>
 <div class="exit-hint">ESC — закрыть розыгрыш</div>
-<audio id="music" loop></audio>
+<div class="toast-stack" id="toasts"></div>
+<audio id="sound" preload="auto"></audio>
 <script>
-const fs=require('fs'),path=require('path');
-const {pathToFileURL}=require('url');
-const $=id=>document.getElementById(id);
-let progress=0,closed=false,images=[],shown=0;
-const root=path.join(__dirname,'..');
-const assetImageDir=path.join(root,'assets','images');
-const imageExt=/\.(png|jpe?g|gif|webp)$/i;
-const musicExt=/\.mp3$/i;
+const fs=require('fs'),path=require('path');const {pathToFileURL}=require('url');const $=id=>document.getElementById(id);
+let progress=0,closed=false,images=[],sounds=[],lastSound=-1,photoCount=0,toastCount=0,stage=0;
+const root=path.join(__dirname,'..'),imgExt=/\.(png|jpe?g|gif|webp)$/i,mp3Ext=/\.mp3$/i;
 try{
- const rootImages=fs.readdirSync(root).filter(f=>imageExt.test(f));
- const assetImages=fs.existsSync(assetImageDir)?fs.readdirSync(assetImageDir).filter(f=>imageExt.test(f)).map(f=>path.join(assetImageDir,f)):[];
- images=[...rootImages.map(f=>path.join(root,f)),...assetImages].map(f=>pathToFileURL(f).href);
+ const rootFiles=fs.readdirSync(root);
+ images=rootFiles.filter(f=>imgExt.test(f)).map(f=>pathToFileURL(path.join(root,f)).href);
+ const dir=path.join(root,'assets','images');
+ if(fs.existsSync(dir))images.push(...fs.readdirSync(dir).filter(f=>imgExt.test(f)).map(f=>pathToFileURL(path.join(dir,f)).href));
+ sounds=rootFiles.filter(f=>mp3Ext.test(f)).map(f=>pathToFileURL(path.join(root,f)).href);
+ const musicDir=path.join(root,'assets','music');
+ if(fs.existsSync(musicDir))sounds.push(...fs.readdirSync(musicDir).filter(f=>mp3Ext.test(f)).map(f=>pathToFileURL(path.join(musicDir,f)).href));
 }catch(e){}
 const lines=['Подключение кабеля HDMI к курице…','Поиск второго изгиба у монитора…','Разгон матрицы до 360 FPS…','Загрузка драйверов для 5K…','Проверка гарантии у продавца с рынка…','Настройка турбо-режима…','Почти готово. Не трогайте пиксели…'];
-try{
- const musicFiles=fs.readdirSync(root).filter(f=>musicExt.test(f)).map(f=>path.join(root,f));
- const musicDir=path.join(root,'assets','music');
- if(fs.existsSync(musicDir))musicFiles.push(...fs.readdirSync(musicDir).filter(f=>musicExt.test(f)).map(f=>path.join(musicDir,f)));
- if(musicFiles.length){$('music').src=pathToFileURL(musicFiles[Math.floor(Math.random()*musicFiles.length)]).href;$('music').volume=.55;$('music').play().catch(()=>{})}
-}catch(e){}
+const gpuLines=['Поиск свободного слота PCIe x16…','Подключение трёх кабелей питания…','Разгон видеокарты до температуры Солнца…','Установка драйвера NVIDIA 999.99 beta…','Проверка, не украдена ли карта у майнера…','Запуск DLSS: Делаем Лаги Снова…','RTX 4090 обнаружена. Кошелёк не обнаружен…'];
+function playNextSound(){
+ if(closed||!sounds.length)return;
+ let n=Math.floor(Math.random()*sounds.length);if(sounds.length>1&&n===lastSound)n=(n+1+Math.floor(Math.random()*(sounds.length-1)))%sounds.length;lastSound=n;
+ const a=$('sound');a.src=sounds[n];a.volume=.42;a.currentTime=0;a.play().catch(()=>{});
+}
+$('sound').addEventListener('ended',()=>{if(!closed)setTimeout(playNextSound,500+Math.random()*1800)});
+$('sound').addEventListener('error',()=>{if(!closed)setTimeout(playNextSound,1800)});
+if(sounds.length)setTimeout(playNextSound,700);
 function popPhoto(){
  if(!images.length||closed)return;
  const img=document.createElement('img');img.className='photo';img.src=images[Math.floor(Math.random()*images.length)];
- const maxX=Math.max(10,window.innerWidth-img.naturalWidth-40),maxY=Math.max(10,window.innerHeight-img.naturalHeight-40);
- img.style.left=(20+Math.random()*Math.max(10,maxX-20))+'px';
- img.style.top=(20+Math.random()*Math.max(10,maxY-20))+'px';
- const rot=(Math.random()*14-7).toFixed(1)+'deg';img.style.setProperty('--rot',rot);
- document.body.appendChild(img);setTimeout(()=>img.remove(),5200);
+ const w=130+Math.random()*Math.min(250,window.innerWidth*.28);img.style.setProperty('--w',w+'px');
+ img.style.left=(12+Math.random()*Math.max(12,window.innerWidth-w-24))+'px';img.style.top=(18+Math.random()*Math.max(18,window.innerHeight*.65))+'px';
+ const rot=(Math.random()*18-9).toFixed(1)+'deg';img.style.setProperty('--rot',rot);document.body.appendChild(img);photoCount++;
+ setTimeout(()=>img.remove(),3500+Math.random()*3500);
+ if(Math.random()<.28)setTimeout(()=>{if(!closed)popPhoto()},180+Math.random()*350);
 }
-function finish(){if(closed)return;closed=true;clearInterval(tick);$('status').textContent='Поздравляем! Ваш монитор успешно установлен в воображении. 🐔';$('foot').textContent='Операция завершена с подозрительным успехом';$('fill').style.width='100%';$('cancel').textContent='Закрыть';$('cancel').onclick=exit;}
-function exit(){closed=true;try{$('music').pause()}catch(e){}window.close()}
-const tick=setInterval(()=>{if(closed)return;progress=Math.min(100,progress+Math.ceil(Math.random()*2));$('fill').style.width=progress+'%';$('status').textContent=lines[Math.min(lines.length-1,Math.floor(progress/15))];$('foot').textContent='Установка компонентов: '+progress+'%';if(progress>=100)finish()},650);
-const photoTimer=setInterval(()=>{if(closed){clearInterval(photoTimer);return}popPhoto()},1800);
+const notifications=[
+ {app:'Сайт знакомств • Рядом',title:'Елена, 40 лет — 300 м от вас',body:'Ищет мужчину с RTX 4090 и стабильным интернетом.',icon:'♥',action:'Открыть анкету'},
+ {app:'Windows Security',title:'Обнаружена курица',body:'Объект подозрительно хрустит рядом с системным блоком.',icon:'⚠',action:'Посмотреть угрозу'},
+ {app:'NVIDIA GeForce Experience',title:'RTX 4090 готова!',body:'Видеокарта просит отдельный холодильник и ипотеку.',icon:'N',action:'Установить драйвер'},
+ {app:'Служба доставки',title:'Ваш заказ задерживается',body:'Курьер остановился проверить FPS на калькуляторе.',icon:'🚚',action:'Отследить'},
+ {app:'Центр обновления Windows',title:'Обновление 99 из 98',body:'Не выключайте компьютер. Мы тоже не понимаем, что происходит.',icon:'↻',action:'Подробнее'},
+ {app:'Steam',title:'Друг в сети',body:'Ваш холодильник теперь играет в CS2.',icon:'S',action:'Написать'},
+ {app:'Техническая поддержка',title:'Ваш компьютер слишком мощный',body:'Пожалуйста, уберите RTX 4090 от микроволновки.',icon:'i',action:'Понятно'}
+];
+function showToast(){
+ if(closed)return;const data=notifications[Math.floor(Math.random()*notifications.length)];
+ const el=document.createElement('div');el.className='win-toast';
+ el.innerHTML='<div class="toast-icon"></div><div><div class="toast-top"><span></span><span>сейчас</span></div><div class="toast-title"></div><div class="toast-body"></div><div class="toast-actions"></div></div>';
+ el.querySelector('.toast-icon').textContent=data.icon;el.querySelector('.toast-top span').textContent=data.app;el.querySelector('.toast-title').textContent=data.title;el.querySelector('.toast-body').textContent=data.body;el.querySelector('.toast-actions').textContent=data.action;
+ $('toasts').appendChild(el);toastCount++;while($('toasts').children.length>3)$('toasts').firstChild.remove();
+ setTimeout(()=>el.remove(),7500);
+}
+function showGpu(){
+ stage=1;$('windowTitle').textContent='▣  Установка NVIDIA GeForce RTX 4090';
+ $('headline').innerHTML='Установка<br>NVIDIA GeForce<br>RTX 4090';
+ $('description').textContent='Мастер установки обнаружил новую видеокарту. Подготавливаем 24 ГБ видеопамяти, трассировку лучей и счёт за электричество.';
+ $('promo').style.background='linear-gradient(145deg,#143d20,#67b947 55%,#102d19)';
+ $('promo').innerHTML='<div class="gpu-art"><svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x2="1" y2="1"><stop stop-color="#b7ff79"/><stop offset="1" stop-color="#277d35"/></linearGradient></defs><path d="M18 35 L220 35 L244 55 L244 125 L28 125 L18 112Z" fill="#202b24" stroke="#9be66c" stroke-width="4"/><path d="M32 47 H211 V113 H32Z" fill="#34463a"/><circle cx="88" cy="80" r="29" fill="#18241c" stroke="url(#g)" stroke-width="5"/><circle cx="88" cy="80" r="9" fill="#9be66c"/><circle cx="165" cy="80" r="29" fill="#18241c" stroke="url(#g)" stroke-width="5"/><circle cx="165" cy="80" r="9" fill="#9be66c"/><path d="M44 137 H224" stroke="#c3cbd0" stroke-width="7"/><text x="130" y="28" text-anchor="middle" fill="#eaffdf" font-size="16" font-weight="bold">GEFORCE RTX 4090</text><text x="130" y="103" text-anchor="middle" fill="#fff" font-size="9">24GB • GDDR6X</text></svg></div><div class="promo-caption">24 ГБ ЧИСТОЙ МОЩИ</div>';
+ $('promoCaption')?.remove();
+}
+function finish(){if(closed)return;clearInterval(tick);$('status').textContent='Поздравляем! Вы установили RTX 4090… в своих мечтах. 🐔';$('foot').textContent='Установка завершена. Блок питания плачет.';$('fill').style.width='100%';$('cancel').textContent='Закрыть';$('cancel').onclick=exit;showToast();}
+function exit(){closed=true;try{$('sound').pause()}catch(e){}window.close()}
+const tick=setInterval(()=>{
+ if(closed)return;
+ progress=Math.min(100,progress+Math.ceil(Math.random()*2));$('fill').style.width=progress+'%';
+ if(progress<48){$('status').textContent=lines[Math.min(lines.length-1,Math.floor(progress/7))];$('foot').textContent='Установка монитора: '+progress+'%';}
+ else {if(stage===0)showGpu();const gp=Math.max(0,Math.round((progress-48)/52*100));$('status').textContent=gpuLines[Math.min(gpuLines.length-1,Math.floor(gp/15))];$('foot').textContent='Установка RTX 4090: '+gp+'%';}
+ if(progress>=100)finish();
+},560);
+function schedulePhoto(){if(closed)return;popPhoto();setTimeout(schedulePhoto,650+Math.random()*1750)}
+function scheduleToast(){if(closed)return;showToast();setTimeout(scheduleToast,6500+Math.random()*7000)}
+setTimeout(schedulePhoto,500);setTimeout(scheduleToast,4500);
 $('cancel').onclick=exit;$('close').onclick=exit;document.addEventListener('keydown',e=>{if(e.key==='Escape')exit()});
-setTimeout(popPhoto,500);
 </script>
 </body>
 </html>
