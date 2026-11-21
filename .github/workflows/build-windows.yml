@@ -17,18 +17,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: p
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
       - name: Install dependencies
+        working-directory: p
         run: npm install
       - name: Build portable EXE
+        working-directory: p
         run: npm run build:win
       - name: Upload portable EXE
         uses: actions/upload-artifact@v4
         with:
           name: ChickenGun-Prank-Portable
-          path: dist/ChickenGun-Prank-Portable-*.exe
+          path: p/dist/ChickenGun-Prank-Portable-*.exe
           if-no-files-found: error
           retention-days: 14
