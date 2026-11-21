@@ -1,19 +1,41 @@
 const { app, BrowserWindow, screen } = require('electron');
 const path = require('path');
-const fs = require('fs');
+
+let prankWindow;
 
 function createWindow() {
-  const win = new BrowserWindow({
-    width: 900, height: 600, minWidth: 680, minHeight: 480,
-    title: 'Windows 12 Setup — totally real (нет)',
-    backgroundColor: '#080b14',
+  const area = screen.getPrimaryDisplay().workArea;
+  prankWindow = new BrowserWindow({
+    x: area.x,
+    y: area.y,
+    width: area.width,
+    height: area.height,
+    frame: false,
+    transparent: true,
+    backgroundColor: '#00000000',
+    resizable: false,
+    movable: false,
+    minimizable: true,
+    maximizable: false,
+    alwaysOnTop: true,
+    skipTaskbar: false,
+    hasShadow: false,
     autoHideMenuBar: true,
-    webPreferences: { contextIsolation: true, nodeIntegration: true }
+    title: 'ChickenGun Prank',
+    webPreferences: {
+      contextIsolation: false,
+      nodeIntegration: true,
+      sandbox: false
+    }
   });
-  win.loadFile(path.join(__dirname, 'index.html'));
+
+  prankWindow.loadFile(path.join(__dirname, 'index.html'));
+  prankWindow.setAlwaysOnTop(true, 'screen-saver');
+  prankWindow.on('closed', () => { prankWindow = null; });
 }
-app.whenReady().then(() => {
-  createWindow();
-  app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0) createWindow(); });
+
+app.whenReady().then(createWindow);
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
-app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
+app.on('window-all-closed', () => app.quit());
