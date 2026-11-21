@@ -4,7 +4,7 @@ const path = require('path');
 let prankWindow;
 
 function createWindow() {
-  const area = screen.getPrimaryDisplay().workArea;
+  const area = screen.getPrimaryDisplay().bounds;
   prankWindow = new BrowserWindow({
     x: area.x,
     y: area.y,
